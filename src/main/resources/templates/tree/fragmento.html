@@ -29,52 +29,56 @@
     <div id="agregarArbol" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header text-white" style="background-color: #40E0D0;">
+                <div class="modal-header text-white" style="background-color: #344e41;">
                     <h5 class="modal-title">[[#{arbol.agregar}]]</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form th:action="@{/tree/guardar}" th:object="${arbol}" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
                     <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="nombreComún" class="form-label">[[#{arbol.nombreComún}]]</label>
-                            <input type="text" class="form-control" name="nombreComún" required>
-                            <div class="invalid-feedback">
-                                Por favor, ingrese el nombre común.
+                        <!-- Primera fila: Nombre Común y Tipo de Flor -->
+                        <div class="row g-3">
+                            <div class="col">
+                                <input type="text" class="form-control" name="nombreComún" placeholder="Nombre Común" required style="background-color: #dad7cd">
+                                <div class="invalid-feedback">
+                                    Por favor, ingrese el nombre común.
+                                </div>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name="tipoFlor" placeholder="Tipo de Flor" required style="background-color: #dad7cd">
+                                <div class="invalid-feedback">
+                                    Por favor, ingrese el tipo de flor.
+                                </div>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="tipoFlor" class="form-label">[[#{arbol.tipoFlor}]]</label>
-                            <input type="text" class="form-control" name="tipoFlor" required>
-                            <div class="invalid-feedback">
-                                Por favor, ingrese el tipo de flor.
+                        <!-- Segunda fila: Dureza de Madera y Otros Detalles -->
+                        <div class="row g-3 mt-3">
+                            <div class="col">
+                                <input type="text" class="form-control" name="durezaMadera" placeholder="Dureza de Madera" required style="background-color: #dad7cd">
+                                <div class="invalid-feedback">
+                                    Por favor, ingrese la dureza del material.
+                                </div>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name="otros" placeholder="Otros Detalles" required style="background-color: #dad7cd">
+                                <div class="invalid-feedback">
+                                    Por favor, ingrese otros detalles.
+                                </div>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="durezaMadera" class="form-label">[[#{arbol.durezaMadera}]]</label>
-                            <input type="text" class="form-control" name="durezaMadera" required>
-                            <div class="invalid-feedback">
-                                Por favor, ingrese la dureza del material.
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="otros" class="form-label">[[#{arbol.otros}]]</label>
-                            <input type="text" class="form-control" name="otros" required>
-                            <div class="invalid-feedback">
-                                Por favor, ingrese otros detalles.
-                            </div>
-                        </div>
-                        <div class="mb-3 form-check">
+                        <!-- Checkbox: Activo -->
+                        <div class="form-check mt-3">
                             <input class="form-check-input" type="checkbox" name="activo" id="activo">
-                            <label class="form-check-label" for="activo">[[#{arbol.activo}]]</label>
+                            <label class="form-check-label" for="activo">Activo</label>
                         </div>
-                        <div class="mb-3">
-                            <label for="imagen" class="form-label">[[#{arbol.rutaImagen}]]</label>
+                        <!-- Fila: Cargar Imagen -->
+                        <div class="mb-3 mt-3">
+                            <label for="imagen" class="form-label">Ruta de Imagen</label>
                             <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);">
                             <img id="blah" src="#" alt="your image" class="img-thumbnail mt-2" height="200">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cerrar</button>
+                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal" style="background-color: #d90429">Cerrar</button>
                         <button class="btn btn-primary" type="submit">[[#{accion.guardar}]]</button>
                     </div>
                 </form>
